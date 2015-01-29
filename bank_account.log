@@ -1,0 +1,5 @@
+# Logfile created on 2015-01-29 15:08:51 +0100 by logger.rb/31641
+I, [2015-01-29T15:08:51.376082 #4208]  INFO -- BankAccount (Mirko Mirkovic): Depositing 100
+I, [2015-01-29T15:09:17.200559 #7260]  INFO -- BankAccount (Mirko Mirkovic): Depositing 100
+I, [2015-01-29T15:10:23.348342 #6756]  INFO -- BankAccount (Mirko Mirkovic): Depositing 100
+I, [2015-01-29T15:10:23.372344 #6756]  INFO -- BankAccount (Mirko Mirkovic): Withdraw 50
