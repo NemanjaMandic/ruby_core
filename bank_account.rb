@@ -2,7 +2,7 @@
   
   attr_reader :transactions
   include Enumerable
-  
+  include Comparable
   
   def <=>(other_account)
     self.balance <=> other_account.balance
