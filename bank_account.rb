@@ -1,17 +1,18 @@
-﻿class BankAccount
+﻿require 'erb'
+
+class BankAccount
   
-  attr_reader :transactions
-  include Enumerable
-  include Comparable
-  
-  def <=>(other_account)
-    self.balance <=> other_account.balance
-  end
-  
-  
+TEMPLATE = <<-TEMPLATE
+ Bank Account: <%= @name %>
+----- 
+  <% @transactions.each do |transaction| %>
+   Transaction: <%= transaction %>
+   <% end %>
+-----  
+TEMPLATE
+
   def initialize(name)
      @name = name
-	 @balance = 0
 	 @transactions = []
   end
   
@@ -24,33 +25,22 @@
     @transactions.push(-amount)
   end	
   
-  def balance
-    @transactions.inject(0) { |sum, iterator| sum += iterator }
+  def get_binding
+    binding
   end
   
-  def each
-    @transactions.each{|transaction| yield transaction}
-  end
-  
-  def to_s
-    "<#{self.class}:name: #{@name}, balance: #{balance}>"
+  def display
+    ERB.new(TEMPLATE).result(get_binding)
   end
 end
 
-account1 = BankAccount.new("Marko Markovic")
-account1.deposit(100)
+account = BankAccount.new("Marko Markovic")
 
- 
- account2 = BankAccount.new("Petar Peric")
- account2.deposit(200)
- 
- puts "Is account 1 greater than account 2 ? #{account1 > account2}"
+account.deposit(100)
+account.withdraw(2)
+account.withdraw(30)
+account.deposit(200)
 
-
-account3 = BankAccount.new("Mirko Mirkovic")
-account3.deposit(400)
-
-puts "Is account 1 between account 2 and 3 ? #{account1.between?(account2, account3)}"
-
+puts account.display
 
 
