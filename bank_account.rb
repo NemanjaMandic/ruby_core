@@ -50,7 +50,7 @@ account1.deposit(100)
 account3 = BankAccount.new("Mirko Mirkovic")
 account3.deposit(400)
 
-puts "Is account 1 between account 2 and 3 ? #{account2.between?(account1, account3)}"
+puts "Is account 1 between account 2 and 3 ? #{account1.between?(account2, account3)}"
 
 
 
